@@ -23,7 +23,7 @@ class CreateFile(LoadVacancy):
     def get_data(criterion):
         """Метод получения данных из файла по указанным критериям"""
         criterion_vac = []
-        with open("data/vacancies.json", "r", encoding="utf8") as file:
+        with open("data/vacancy.json", "r", encoding="utf8") as file:
             vacancies = json.load(file)
             for vac in vacancies:
                 if not vac["snippet"]["requirement"]:

@@ -19,7 +19,7 @@ def sorting(vacancies, n: int):
 def vac_user():
     """Приводит полученные данные к данным для вывода"""
 
-    with open("data/vacancies.json", "r", encoding="utf8") as f:
+    with open("data/vacancy.json", "r", encoding="utf8") as f:
         vacancies = json.load(f)
     user_vac = []
     for vac in vacancies:
