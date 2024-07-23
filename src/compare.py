@@ -3,27 +3,31 @@ import json
 
 class LoadVacancy(ABC):
     @abstractmethod
-    def read_file(self):
+    def read_file(self, file_name):
         pass
 
     @abstractmethod
-    def save_file(self):
+    def save_file(self, data, file_name):
+        pass
+
+    @abstractmethod
+    def del_file(self, file_name):
         pass
 
 class CreateFile(LoadVacancy):
-    def read_file(self):
-        with open("data/vacancy.json","r",encoding="utf8") as file:
+    def read_file(self, file_name):
+        with open(f"data/{file_name}","r",encoding="utf8") as file:
             return json.load(file)
 
-    def save_file(self, data):
-        with open("data/vacancy.json", "w", encoding="utf8") as file:
+    def save_file(self, data, file_name):
+        with open(f"data/{file_name}", "w", encoding="utf8") as file:
             json.dump(data, file, ensure_ascii=False, indent=4)
 
-    @staticmethod
-    def get_data(criterion):
+
+    def get_data(self, criterion, file_name):
         """Метод получения данных из файла по указанным критериям"""
         criterion_vac = []
-        with open("data/vacancy.json", "r", encoding="utf8") as file:
+        with open(f"data/{file_name}", "r", encoding="utf8") as file:
             vacancies = json.load(file)
             for vac in vacancies:
                 if not vac["snippet"]["requirement"]:
@@ -32,3 +36,7 @@ class CreateFile(LoadVacancy):
                     if criterion in vac["snippet"]["requirement"]:
                         criterion_vac.append(vac)
         return criterion_vac
+
+    def del_file(self, file_name):
+        with open(f"data/{file_name}", "w") as file:
+            pass

@@ -16,10 +16,10 @@ def sorting(vacancies, n: int):
     return sorted_vacancies[:n]
 
 
-def vac_user():
+def vac_user(file_name):
     """Приводит полученные данные к данным для вывода"""
 
-    with open("data/vacancy.json", "r", encoding="utf8") as f:
+    with open(f"data/{file_name}", "r", encoding="utf8") as f:
         vacancies = json.load(f)
     user_vac = []
     for vac in vacancies:
