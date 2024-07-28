@@ -1,5 +1,5 @@
 from src.parser import HH
-from src.utils import vac_user, sorting
+from src.utils import create_class, sorting
 from src.compare import CreateFile
 
 
@@ -16,7 +16,7 @@ def main():
     fv.save_file(vacancies, file_name)
     name_criterion = input('Введите критерий для отбора вакансий: \n')
     fv.get_data(name_criterion, file_name)
-    processed_vacancies = vac_user(file_name)
+    processed_vacancies = create_class(file_name)
     n = input('Введите количество вакансий для просмотра: \n')
     top_vacancies = sorting(processed_vacancies, int(n))
     for vac in top_vacancies:

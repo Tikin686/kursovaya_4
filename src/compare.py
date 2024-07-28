@@ -1,6 +1,7 @@
 from abc import ABC, abstractmethod
 import json
 
+
 class LoadVacancy(ABC):
     @abstractmethod
     def read_file(self, file_name):
@@ -14,15 +15,15 @@ class LoadVacancy(ABC):
     def del_file(self, file_name):
         pass
 
+
 class CreateFile(LoadVacancy):
     def read_file(self, file_name):
-        with open(f"data/{file_name}","r",encoding="utf8") as file:
+        with open(f"data/{file_name}", "r", encoding="utf8") as file:
             return json.load(file)
 
     def save_file(self, data, file_name):
         with open(f"data/{file_name}", "w", encoding="utf8") as file:
             json.dump(data, file, ensure_ascii=False, indent=4)
-
 
     def get_data(self, criterion, file_name):
         """Метод получения данных из файла по указанным критериям"""
