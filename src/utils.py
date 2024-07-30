@@ -7,11 +7,11 @@ def sorting(vacancies, n: int):
     return sorted_vacancies[:n]
 
 
-def create_class(file_name):
+def create_class():
     """Приводит полученные данные к данным для вывода"""
     list_vacancies = []
     vacancies = CreateFile()
-    for vac in vacancies.read_file(file_name):
+    for vac in vacancies.read_file():
         if not vac["salary"]:
             vac["salary"] = {"from": 0, "to": 0, "currency": ""}
         vacancy = Vacancy(vac['name'], vac['salary'], vac['url'], vac["snippet"]['requirement'])
